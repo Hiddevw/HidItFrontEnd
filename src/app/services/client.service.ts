@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
 providedIn: 'root'
 })
 export class ClientService {
-private baseUrl = 'http://localhost:8080/api/clients';
+private baseUrl = '/api/clients';
 
 constructor(private http: HttpClient) {}
 
   getAllClients(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}`);
-  }
+    console.log('Calling getAllClients API');
+    return this.http.get<any[]>(`${this.baseUrl}`, { withCredentials: true });  }
 
   getClientById(clientId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${clientId}`);

@@ -1,4 +1,7 @@
-<!-- app.component.html or any other template -->
-<a routerLink="/">Home</a>
-<a routerLink="/clients">Clients</a>
-<a routerLink="/trainers">Trainers</a>
+<nav class="navbar">
+  <a routerLink="/" class="nav-link">Home</a>
+  <a (click)="navigateToClients()" class="nav-link">Clients</a>
+  <a routerLink="/trainers" class="nav-link">Trainers</a>
+</nav>
+
+<router-outlet></router-outlet>
