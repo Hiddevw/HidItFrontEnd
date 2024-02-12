@@ -1,3 +1,5 @@
+// app.module.ts
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,12 +9,11 @@ import { ClientComponent } from './components/client/client.component';
 import { TrainerComponent } from './components/trainer/trainer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ClientService } from './services/client.service';
-import { TrainerService } from './services/trainer.service';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
 declarations: [
+AppComponent,
 HomeComponent,
 ClientComponent,
 TrainerComponent
@@ -22,11 +23,13 @@ BrowserModule,
 AppRoutingModule,
 HttpClientModule,
 FormsModule,
-],
-providers: [
-ClientService,
-TrainerService
-],
-bootstrap: [AppComponent]
+RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'clients', component: ClientComponent },
+      { path: 'trainers', component: TrainerComponent },
+    ]),
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
