@@ -7,13 +7,12 @@ import { ClientComponent } from './components/client/client.component';
 import { TrainerComponent } from './components/trainer/trainer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ClientService } from './services/client.service'; // Adjust the import based on your actual path
-import { TrainerService } from './services/trainer.service'; // Adjust the import based on your actual path
-
+import { ClientService } from './services/client.service';
+import { TrainerService } from './services/trainer.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
 declarations: [
-AppComponent,
 HomeComponent,
 ClientComponent,
 TrainerComponent
@@ -22,11 +21,11 @@ imports: [
 BrowserModule,
 AppRoutingModule,
 HttpClientModule,
-FormsModule
+FormsModule,
 ],
 providers: [
 ClientService,
-TrainerService // Add TrainerService to the providers array
+TrainerService
 ],
 bootstrap: [AppComponent]
 })

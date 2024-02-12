@@ -1,21 +1,31 @@
-import{Component}from'@angular/core';
-import {RouterOutlet}from '@angular/router';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ClientService } from './services/client.service';
 
 @Component({
 selector: 'app-root',
-standalone: true,
-imports: [RouterOutlet],
 templateUrl: './app.component.html',
-styleUrl: './app.component.css'
-})
-export class AppComponent {
+styleUrls: ['./app.component.css'],
 
+})
+export class AppComponent implements OnInit {
+clients: any[] = [];
 title = 'HidItFrontEnd';
-constructor(private router: Router) {}
+
+constructor(private clientService: ClientService, private router: Router) {}
 
   navigateToClients() {
-
     this.router.navigate(['/clients']);
+  }
+
+  ngOnInit(): void {
+    this.clientService.getAllClients().subscribe(
+      (data) => {
+        this.clients = data;
+      },
+      (error: any) => {
+        console.error('Error fetching data:', error);
+      }
+    );
   }
 }

@@ -9,7 +9,7 @@ templateUrl: './client.component.html',
 styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
-// Component properties and methods go here
+clients: any[] = [];
 
 constructor(private clientService: ClientService) {}
 
